@@ -1,0 +1,24 @@
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #ffffff;
+}
+
+header {
+    background-color: #333;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    margin: 10px;
+}
+
+img {
+  border-radius: 20px;
+  width: 200px; /* Замените на желаемую ширину */
+  height: auto; /* Чтобы сохранить пропорции */
+}
