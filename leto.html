@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Троицко-Урайские вести | Лето 2025</title>
+    <link rel="icon" href="./img/favicon.jpg">
+    <link href="https://fonts.googleapis.com/css2?family=PT+Serif:wght@400;700&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary-color: #1a3e72;
+            --secondary-color: #e74c3c;
+            --accent-color: #f39c12;
+            --light-gray: #f5f5f5;
+            --dark-gray: #333;
+            --text-color: #222;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: var(--light-gray);
+            font-family: 'PT Serif', serif;
+            color: var(--text-color);
+            line-height: 1.7;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 900px;
+            margin: 20px auto;
+            background-color: white;
+            padding: 30px;
+            border-radius: 5px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .header {
+            border-bottom: 2px solid var(--primary-color);
+            padding-bottom: 15px;
+            margin-bottom: 25px;
+        }
+
+        .header h1 {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 5px;
+            font-weight: 700;
+        }
+
+        .header .subtitle {
+            font-size: 1.1rem;
+            color: var(--dark-gray);
+            font-style: italic;
+            margin-bottom: 10px;
+        }
+
+        .date {
+            color: #666;
+            font-size: 0.9rem;
+            margin-bottom: 20px;
+        }
+
+        h2, h3, h4, h5, h6 {
+            color: var(--primary-color);
+            margin-top: 30px;
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+
+        h2 {
+            font-size: 1.8rem;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 8px;
+        }
+
+        h3 {
+            font-size: 1.4rem;
+        }
+
+        img {
+            border-radius: 4px;
+            width: 100%;
+            max-width: 600px;
+            height: auto;
+            display: block;
+            margin: 20px auto;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.15);
+        }
+
+        .caption {
+            text-align: center;
+            font-size: 0.9rem;
+            color: #666;
+            margin-top: -15px;
+            margin-bottom: 25px;
+            font-style: italic;
+        }
+
+        .article-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            font-size: 0.9rem;
+            color: #666;
+        }
+
+        .author {
+            font-weight: 500;
+        }
+
+        footer {
+            background-color: var(--primary-color);
+            color: white;
+            text-align: center;
+            padding: 20px 0;
+            margin-top: 40px;
+            font-family: 'Roboto', sans-serif;
+        }
+
+        footer p {
+            margin: 0;
+            padding: 0 15px;
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+
+        footer a {
+            color: var(--accent-color);
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        .news-item {
+            margin-bottom: 40px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .news-item:last-child {
+            border-bottom: none;
+        }
+
+        .tag {
+            display: inline-block;
+            background-color: var(--accent-color);
+            color: white;
+            padding: 3px 8px;
+            border-radius: 3px;
+            font-size: 0.8rem;
+            margin-right: 5px;
+            text-transform: uppercase;
+        }
+
+        /* Media Queries */
+        @media (max-width: 768px) {
+            .container {
+                width: 95%;
+                padding: 20px;
+            }
+            
+            .header h1 {
+                font-size: 2rem;
+            }
+            
+            h2 {
+                font-size: 1.5rem;
+            }
+            
+            h3 {
+                font-size: 1.2rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <div class="header">
+            <h1>Троицко-Урайские вести</h1>
+            <div class="subtitle">Официальный информационный портал села Троицкий Урай</div>
+            <div class="date">Выпуск от 11 августа 2025 года</div>
+        </div>
+
+        <h2>Летние события в Троицком Урае</h2>
+        
+        <div class="article-meta">
+            <span class="author">Корреспонденты: Кирилл Флорик. <br> Григорий Диприк.</span>
+        </div>
+
+        <div class="news-item">
+            <h3>Хазеев Артем Эльвирович: от местного жителя к селебрити</h3>
+            <p>Наш земляк Хазеев Артем Эльвирович продолжает набирать популярность среди жителей Троицкого Урая. После прошлых публикаций и активной деятельности в социальных сетях, особенно в TikTok, Артем стал настоящей местной знаменитостью.</p>
+            <img src="./IMG/в-очках.jpg" alt="Хазеев Артем Эльвирович">
+            <div class="caption">Хазеев Артем Эльвирович — новый медиа-лидер Троицкого Урая</div>
+        </div>
+
+        <div class="news-item">
+            <h3>Пророчество Григория сбылось</h3>
+            <p>Напомним, что зимой 2025 года, в канун Нового года, местный житель Григорий высказал предположение о пристрастии Артема к энергетическим напиткам. Как выяснилось этим летом, его слова оказались пророческими.</p>
+            <img src="./IMG/пьет.jpg" alt="Артем с энергетиком">
+            <div class="caption">Артем Хазеев с энергетическим напитком — предположения Григория подтвердились</div>
+        </div>
+
+        <div class="news-item">
+            <h3>Знакомство с легендарным "Огурчиком"</h3>
+            <p>Артем не только завоевал популярность в родном селе, но и расширил круг общения, познакомившись с самым известным местным дедушкой по кличке "Огурчик". Более того, слава нашего земляка достигла и соседнего поселка городского типа Рыбная Слобода, где он также стал узнаваемой фигурой.</p>
+            <img src="./IMG/с-огурчиком.jpg" alt="Артем и Огурчик">
+            <div class="caption">Артем Хазеев и легендарным "Огурчиком" — встреча поколений</div>
+        </div>
+
+        <div class="news-item">
+            <h3>Скандал с энергетиками: расследование</h3>
+            <p>Наши корреспонденты обнаружили в социальных сетях Артема фотографии, на которых якобы болшое количество энергетических напитков. Эта информация вызвала бурное обсуждение среди жителей.</p>
+            <img src="./IMG/энергос.jpg" alt="Энергетические напитки">
+            <div class="caption">Фото, вызвавшее общественный резонанс</div>
+        </div>
+
+        <div class="news-item">
+            <h3>Официальное опровержение</h3>
+            <p>После тщательного расследования выяснилось, что опубликованные фотографии были ошибочно приписаны Артему. Как оказалось, это был фейковый компромат, распространяемый недоброжелателями. Сам Артем пояснил, что действительно употребил энергетики, но исключительно с целью бодрствования во время ремонта своего премиального автомобиля "Гелендваген".</p>
+            <img src="./IMG/механик.jpg" alt="Артем ремонтирует автомобиль">
+            <div class="caption">Артем Хазеев за работой — ремонт премиального автомобиля</div>
+        </div>
+    </div>
+
+    <footer>
+        <p>
+        Внимание: Все события и персонажи вымышлены. Никто ничего не употреблял. Данный контент создан исключительно в развлекательных целях.<br>
+        <a href="https://kirill-fe.github.io/hart/">Читайте также наш зимний выпуск</a></p>
+    </footer>
+</body>
+</html>
