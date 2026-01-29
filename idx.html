@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Florik-Project СМИ | Главная</title>
+    <link rel="icon" href="./img/favicon.jpg">
+    <link href="https://fonts.googleapis.com/css2?family=PT+Serif:wght@400;700&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary-color: #1a3e72;
+            --secondary-color: #e74c3c;
+            --accent-color: #f39c12;
+            --light-gray: #f5f5f5;
+            --dark-gray: #333;
+            --text-color: #222;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: var(--light-gray);
+            font-family: 'PT Serif', serif;
+            color: var(--text-color);
+            line-height: 1.7;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1100px;
+            margin: 20px auto;
+            background-color: white;
+            padding: 30px;
+            border-radius: 5px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .header {
+            text-align: center;
+            padding-bottom: 30px;
+            border-bottom: 2px solid var(--accent-color);
+            margin-bottom: 40px;
+        }
+        
+        .site-title {
+            color: var(--primary-color);
+            font-size: 3rem;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        
+        .site-subtitle {
+            color: var(--secondary-color);
+            font-size: 1.3rem;
+            font-weight: 500;
+            margin-bottom: 20px;
+        }
+        
+        .site-description {
+            color: var(--dark-gray);
+            font-size: 1.1rem;
+            max-width: 800px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        .news-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .news-card {
+            background-color: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 1px solid #eee;
+        }
+
+        .news-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        .news-number {
+            background-color: var(--primary-color);
+            color: white;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            font-weight: bold;
+            border-radius: 50%;
+            margin: 20px auto 15px;
+        }
+
+        .news-content {
+            padding: 20px;
+        }
+
+        .news-title {
+            color: var(--primary-color);
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            min-height: 60px;
+        }
+
+        .news-excerpt {
+            color: var(--dark-gray);
+            font-size: 0.95rem;
+            margin-bottom: 20px;
+            line-height: 1.5;
+            min-height: 70px;
+        }
+
+        .news-link {
+            display: inline-block;
+            background-color: var(--accent-color);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: background-color 0.3s ease;
+            border: none;
+            cursor: pointer;
+            font-family: 'Roboto', sans-serif;
+            font-size: 0.95rem;
+        }
+
+        .news-link:hover {
+            background-color: var(--secondary-color);
+        }
+
+        .news-date {
+            font-size: 0.85rem;
+            color: #666;
+            margin-top: 15px;
+            font-style: italic;
+        }
+
+        .news-counter {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            margin-left: 10px;
+        }
+
+        footer {
+            background-color: var(--primary-color);
+            color: white;
+            text-align: center;
+            padding: 30px 0;
+            margin-top: 60px;
+            font-family: 'Roboto', sans-serif;
+        }
+
+        footer p {
+            margin: 0;
+            padding: 0 15px;
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+
+        footer a {
+            color: var(--accent-color);
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin: 20px 0;
+        }
+
+        .footer-links a {
+            color: white;
+            opacity: 0.9;
+        }
+
+        .footer-links a:hover {
+            opacity: 1;
+        }
+
+        /* Media Queries */
+        @media (max-width: 768px) {
+            .container {
+                width: 95%;
+                padding: 20px;
+            }
+            
+            .site-title {
+                font-size: 2.2rem;
+            }
+            
+            .site-subtitle {
+                font-size: 1.1rem;
+            }
+            
+            .news-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            
+            .news-card {
+                max-width: 400px;
+                margin: 0 auto;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .site-title {
+                font-size: 1.8rem;
+            }
+            
+            .news-title {
+                font-size: 1.1rem;
+                min-height: auto;
+            }
+            
+            .news-excerpt {
+                min-height: auto;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="header">
+            <h1 class="site-title">Florik-Project СМИ</h1>
+            <div class="site-subtitle">Независимое издание о главных событиях и персонах</div>
+            <p class="site-description">Следите за самыми свежими и интересными новостями из мира стриминга, медиа и не только. Эксклюзивные репортажи, интервью и аналитика от нашей команды.</p>
+            <p>Корреспонденты: <br> <a href="https://t.me/kirill_Florik">Кирилл Флорик</a> <br> <a href="https://t.me/diprik">Гриша Диприк</a> <br> <a href="https://t.me/Tema_Uniqsexx">Тема Гучигенг</a></p>
+        </div>
+
+        <h2 style="text-align: center; color: var(--primary-color);">Последние новости <span class="news-counter">5 материалов</span></h2>
+        
+        <div class="news-grid">
+            <!-- Новость 1 -->
+            <div class="news-card">
+                <div class="news-content">
+                    <h3 class="news-title">Скандальный новогодний инцидент с участием Хазеева Артёма</h3>
+                    <p class="news-excerpt">Курьёзный случай в жилище местного жителя Григория, где Артём Хазеев устроил газовую атаку, вызвавшую бурную реакцию присутствующих.</p>
+                    <a href="https://kirill-fe.github.io/hart/" class="news-link">Читать полностью</a>
+                    <div class="news-date">Опубликовано: 31 декабря 2024</div>
+                </div>
+            </div>
+
+            <!-- Новость 2 -->
+            <div class="news-card">
+                <div class="news-content">
+                    <h3 class="news-title">Хазеев Артем Эльвирович: от местного жителя к селебрити</h3>
+                    <p class="news-excerpt">Наш земляк Хазеев Артем Эльвирович продолжает набирать популярность среди жителей Троицкого Урая. После прошлых публикаций и активной деятельности в социальных сетях, особенно в TikTok, Артем стал настоящей местной знаменитостью.</p>
+                    <a href="https://kirill-fe.github.io/hart/leto" class="news-link">Читать полностью</a>
+                    <div class="news-date">Опубликовано: 11 августа 2025 года</div>
+                </div>
+            </div>
+
+            <!-- Новость 3 -->
+            <div class="news-card">
+                <div class="news-content">
+                    <h3 class="news-title">Хазеев Артем Эльвирович: Я конечно свободный человек что хочу то и делаю</h3>
+                    <p class="news-excerpt">Наш земляк Хазеев Артем Эльвирович стал свободным человеком после того как он стал не зависим от радитилей в 12 лет "что хочу то творю"</p>
+                    <a href="https://kirill-fe.github.io/hart/l-2" class="news-link">Читать полностью</a>
+                    <div class="news-date">Опубликовано: 22 августа 2025 года</div>
+                </div>
+            </div>
+
+            <!-- Новость 4 -->
+            <div class="news-card">
+                <div class="news-content">
+                    <h3 class="news-title">Правда о Грише</h3>
+                    <p class="news-excerpt">Всё это время Григорий тайно употреблял энергетические напитки, скрывая это от всех и систематически подставляя Артёма. Нашему корреспонденту удалось запечатлеть этот факт с помощью скрытой съёмки, что проливает свет на истинное поведение Григория.</p>
+                    <a href="https://kirill-fe.github.io/hart/l-3" class="news-link">Читать полностью</a>
+                    <div class="news-date">Опубликовано: 28 августа 2025 года</div>
+                </div>
+            </div>
+
+            <!-- Новость 5 -->
+            <div class="news-card">
+                <div class="news-content">
+                    <h3 class="news-title">Артём Хазеев: от стримера до главы Дагестана</h3>
+                    <p class="news-excerpt">Невероятная история превращения начинающего стримера в политическую фигуру и его избрание главой Республики Дагестан.</p>
+                    <a href="https://kirill-fe.github.io/hart/osen" class="news-link">Читать полностью</a>
+                    <div class="news-date">Опубликовано: 30 ноября 2025 года</div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <footer>
+        <p>Внимание: Все события и персонажи вымышлены. Данный контент создан исключительно в развлекательных целях.</p>
+        <p style="margin-top: 20px; font-size: 0.8rem; opacity: 0.8;">Разработано <a href="https://kirill-fe.github.io/projects/">Florik-Project</a> © 2026</p>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const newsLinks = document.querySelectorAll('.news-link');
+            // Подсветка карточек при наведении
+            const newsCards = document.querySelectorAll('.news-card');
+            newsCards.forEach(card => {
+                card.addEventListener('mouseenter', function() {
+                    this.style.borderColor = 'var(--accent-color)';
+                });
+                
+                card.addEventListener('mouseleave', function() {
+                    this.style.borderColor = '#eee';
+                });
+            });
+        });
+    </script>
+</body>
+</html>
