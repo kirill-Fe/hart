@@ -245,12 +245,12 @@
             <h1 class="site-title">Florik-Project СМИ</h1>
             <div class="site-subtitle">Независимое издание о главных событиях и персонах</div>
             <p class="site-description">Следите за самыми свежими и интересными новостями из мира стриминга, медиа и не только. Эксклюзивные репортажи, интервью и аналитика от нашей команды.</p>
-            <p>Корреспонденты: <br> <a href="https://t.me/kirill_Florik">Кирилл Флорик</a> <br> <a href="https://t.me/diprik">Гриша Диприк</a> <br> <a href="https://t.me/Tema_Uniqsexx">Тема Гучигенг</a></p>
+            <p>Корреспонденты: <br> <a href="https://t.me/kirill_Florik">Кирилл Флорик</a> <br> <a href="https://t.me/diprik">Гриша Диприк</a> <br> <a href="https://t.me/temauniqsexx812">Тема Гучигенг</a></p>
         </div>
 
-        <h2 style="text-align: center; color: var(--primary-color);">Последние новости <span class="news-counter">6 материалов</span></h2>
+        <h2 style="text-align: center; color: var(--primary-color);">Последние новости <span class="news-counter" id="newsCounter">0</span> материалов</h2>
         
-        <div class="news-grid">
+        <div class="news-grid" id="newsGrid">
             <!-- Новость 1 -->
             <div class="news-card">
                 <div class="news-content">
@@ -300,7 +300,7 @@
                     <div class="news-date">Опубликовано: 30 ноября 2025 года</div>
                 </div>
             </div>
-            
+
             <!-- Новость 6 -->
             <div class="news-card">
                 <div class="news-content">
@@ -311,7 +311,7 @@
                 </div>
             </div>
 
-             <!-- Новость 7 -->
+            <!-- Новость 7 -->
             <div class="news-card">
                 <div class="news-content">
                     <h3 class="news-title">Апрельский психоз авиамарин, даркнет и философия на подоконнике</h3>
@@ -320,9 +320,26 @@
                     <div class="news-date">Опубликовано: 8 Апреля 2026 года</div>
                 </div>
             </div>
+<!--
+            <!-- Новость 8 
+            <div class="news-card">
+                <div class="news-content">
+                    <h3 class="news-title"></h3>
+                    <p class="news-excerpt"></p>
+                    <a href="https://kirill-fe.github.io/hart/" class="news-link">Читать полностью</a>
+                    <div class="news-date">Опубликовано:  2026 года</div>
+                </div>
+            </div>
 
-             <!-- Новость 8 -->
-            
+            <!-- Новость 9 
+            <div class="news-card">
+                <div class="news-content">
+                    <h3 class="news-title"></h3>
+                    <p class="news-excerpt"></p>
+                    <a href="https://kirill-fe.github.io/hart/" class="news-link">Читать полностью</a>
+                    <div class="news-date">Опубликовано:  2026 года</div>
+                </div>
+            </div>-->
         </div>
     </div>
 
@@ -332,19 +349,39 @@
     </footer>
 
     <script>
+        // Функция обновления счётчика материалов
+        function updateNewsCount() {
+            const newsCards = document.querySelectorAll('.news-card');
+            const counterSpan = document.getElementById('newsCounter');
+            if (counterSpan) {
+                const count = newsCards.length;
+                counterSpan.textContent = count;
+            }
+        }
+
+        // Запускаем при загрузке страницы
         document.addEventListener('DOMContentLoaded', function() {
-            const newsLinks = document.querySelectorAll('.news-link');
+            updateNewsCount();
+
             // Подсветка карточек при наведении
             const newsCards = document.querySelectorAll('.news-card');
             newsCards.forEach(card => {
                 card.addEventListener('mouseenter', function() {
                     this.style.borderColor = 'var(--accent-color)';
                 });
-                
                 card.addEventListener('mouseleave', function() {
                     this.style.borderColor = '#eee';
                 });
             });
+
+            // Наблюдатель за изменениями в контейнере .news-grid (на случай динамического добавления/удаления карточек)
+            const newsGrid = document.getElementById('newsGrid');
+            if (newsGrid) {
+                const observer = new MutationObserver(function(mutations) {
+                    updateNewsCount();
+                });
+                observer.observe(newsGrid, { childList: true, subtree: true });
+            }
         });
     </script>
 </body>
