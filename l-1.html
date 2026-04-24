@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Троицко-Урайские вести | 11 августа 2025</title>
+    <link rel="icon" href="./img/favicon.jpg">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&family=Playfair+Display:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            transition: all 0.2s ease;
+        }
+
+        :root {
+            --primary: #8a63f2;
+            --primary-glow: rgba(138, 99, 242, 0.35);
+            --secondary: #63f2c8;
+            --accent: #ff7e5f;
+            --dark: #121212;
+            --darker: #0a0a0a;
+            --card-bg: #1e1e1e;
+            --text: #e0e0e0;
+            --text-secondary: #a0a0a0;
+            --border-light: rgba(255, 255, 255, 0.05);
+            --border-glow: rgba(138, 99, 242, 0.3);
+        }
+
+        body {
+            background-color: var(--dark);
+            color: var(--text);
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            overflow-x: hidden;
+            user-select: none;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        ::-webkit-scrollbar {
+            width: 12px;
+            height: 12px;
+        }
+        ::-webkit-scrollbar-track {
+            background: var(--darker);
+            border-radius: 10px;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: var(--primary);
+            border-radius: 10px;
+            border: 2px solid var(--darker);
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #7a4fdf;
+        }
+
+        ::selection {
+            background: var(--primary);
+            color: white;
+            text-shadow: none;
+        }
+
+        html {
+            cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="%238a63f2" d="M3 3l18 18-6-6V11L7 6v11z"/></svg>'), auto;
+        }
+        a, button, footer a, .news-item a {
+            cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="%23ff7e5f" d="M3 3l18 18-6-6V11L7 6v11z"/></svg>'), pointer;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 2rem auto;
+            padding: 0 1.5rem;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 3rem;
+            padding-bottom: 1.8rem;
+            border-bottom: 2px solid var(--primary);
+            position: relative;
+        }
+        .header h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.2rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #ffffff, var(--secondary), var(--primary));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            letter-spacing: -0.5px;
+            margin-bottom: 0.5rem;
+            text-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+        .subtitle {
+            font-size: 1.1rem;
+            font-weight: 500;
+            color: var(--secondary);
+            margin-bottom: 0.5rem;
+            letter-spacing: 0.3px;
+        }
+        .date {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            background: rgba(30,30,30,0.5);
+            display: inline-block;
+            padding: 0.2rem 1rem;
+            border-radius: 40px;
+            backdrop-filter: blur(4px);
+            font-family: monospace;
+        }
+
+        .section-head {
+            margin: 2rem 0 1.5rem;
+        }
+        .section-head h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            font-weight: 700;
+            background: linear-gradient(120deg, #fff, var(--secondary));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            border-left: 4px solid var(--primary);
+            padding-left: 1rem;
+        }
+
+        .article-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 1.5rem 0 2rem;
+            padding: 0.8rem 1rem;
+            background: var(--card-bg);
+            border-radius: 20px;
+            border: 1px solid var(--border-light);
+            font-size: 0.9rem;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .author {
+            font-weight: 600;
+            color: var(--secondary);
+        }
+        .author i, .date-meta i {
+            margin-right: 6px;
+        }
+
+        .news-item {
+            background: var(--card-bg);
+            border-radius: 28px;
+            margin-bottom: 2.2rem;
+            padding: 1.6rem;
+            border: 1px solid var(--border-light);
+            transition: transform 0.25s ease, box-shadow 0.3s ease, border-color 0.2s;
+            box-shadow: 0 12px 22px -10px rgba(0, 0, 0, 0.5);
+        }
+        .news-item:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 30px -12px rgba(0, 0, 0, 0.6);
+            border-color: var(--border-glow);
+        }
+        .news-item h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: var(--secondary);
+            margin-bottom: 0.9rem;
+            line-height: 1.3;
+        }
+        .news-item p {
+            color: var(--text);
+            margin-bottom: 1.2rem;
+            line-height: 1.6;
+            font-size: 1rem;
+        }
+        .news-item img {
+            border-radius: 24px;
+            width: 100%;
+            max-width: 600px;
+            height: auto;
+            display: block;
+            margin: 1.2rem auto;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(255,255,255,0.1);
+            transition: transform 0.3s ease;
+        }
+        .news-item img:hover {
+            transform: scale(1.01);
+        }
+        .caption {
+            text-align: center;
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            margin-top: -0.5rem;
+            margin-bottom: 0.5rem;
+            font-style: italic;
+        }
+
+        footer {
+            background: linear-gradient(135deg, var(--darker), var(--dark));
+            color: var(--text-secondary);
+            text-align: center;
+            padding: 2rem 1rem;
+            margin-top: 3rem;
+            border-top: 1px solid rgba(138, 99, 242, 0.3);
+            font-size: 0.85rem;
+        }
+        footer p {
+            margin: 0.5rem 0;
+        }
+        footer a {
+            color: var(--secondary);
+            text-decoration: none;
+            transition: 0.2s;
+        }
+        footer a:hover {
+            color: var(--primary);
+            text-decoration: underline;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 1rem;
+            }
+            .header h1 {
+                font-size: 2.2rem;
+            }
+            .section-head h2 {
+                font-size: 1.6rem;
+            }
+            .news-item h3 {
+                font-size: 1.35rem;
+            }
+            .news-item {
+                padding: 1.2rem;
+            }
+            .article-meta {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+        }
+        @media (max-width: 480px) {
+            .header h1 {
+                font-size: 1.9rem;
+            }
+            .news-item h3 {
+                font-size: 1.25rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="screenshot-protect">
+    <div class="container">
+        <div class="header">
+            <h1>Троицко-Урайские вести</h1>
+            <div class="subtitle">Официальный информационный портал села Троицкий Урай</div>
+            <div class="date">Выпуск от 11 августа 2025 года</div>
+        </div>
+
+        <div class="section-head">
+            <h2>Летние события в Троицком Урае</h2>
+        </div>
+        
+        <div class="article-meta">
+            <span class="author"><i class="fas fa-pen-fancy"></i> Корреспонденты: <br> Кирилл Флорик. <br> Григорий Диприк.</span>
+        </div>
+
+        <div class="news-item">
+            <h3>Хазеев Артем Эльвирович: от местного жителя к селебрити</h3>
+            <p>Наш земляк Хазеев Артем Эльвирович продолжает набирать популярность среди жителей Троицкого Урая. После прошлых публикаций и активной деятельности в социальных сетях, особенно в TikTok, Артем стал настоящей местной знаменитостью.</p>
+            <img src="./IMG/в-очках.jpg" alt="Хазеев Артем Эльвирович">
+            <div class="caption">Хазеев Артем Эльвирович — новый медиа-лидер Троицкого Урая</div>
+        </div>
+
+        <div class="news-item">
+            <h3>Пророчество Григория сбылось</h3>
+            <p>Напомним, что зимой 2025 года, в канун Нового года, местный житель Григорий высказал предположение о пристрастии Артема к энергетическим напиткам. Как выяснилось этим летом, его слова оказались пророческими.</p>
+            <img src="./IMG/пьет.jpg" alt="Артем с энергетиком">
+            <div class="caption">Артем Хазеев с энергетическим напитком — предположения Григория подтвердились</div>
+        </div>
+
+        <div class="news-item">
+            <h3>Знакомство с легендарным "Огурчиком"</h3>
+            <p>Артем не только завоевал популярность в родном селе, но и расширил круг общения, познакомившись с самым известным местным дедушкой по кличке "Огурчик". Более того, слава нашего земляка достигла и соседнего поселка городского типа Рыбная Слобода, где он также стал узнаваемой фигурой.</p>
+            <img src="./IMG/с-огурчиком.jpg" alt="Артем и Огурчик">
+            <div class="caption">Артем Хазеев и легендарным "Огурчиком" — встреча поколений</div>
+        </div>
+
+        <div class="news-item">
+            <h3>Скандал с энергетиками: расследование</h3>
+            <p>Наши корреспонденты обнаружили в социальных сетях Артема фотографии, на которых якобы болшое количество энергетических напитков. Эта информация вызвала бурное обсуждение среди жителей.</p>
+            <img src="./IMG/энергос.jpg" alt="Энергетические напитки">
+            <div class="caption">Фото, вызвавшее общественный резонанс</div>
+        </div>
+
+        <div class="news-item">
+            <h3>Официальное опровержение</h3>
+            <p>После тщательного расследования выяснилось, что опубликованные фотографии были ошибочно приписаны Артему. Как оказалось, это был фейковый компромат, распространяемый недоброжелателями. Сам Артем пояснил, что действительно употребил энергетики, но исключительно с целью бодрствования во время ремонта своего премиального автомобиля "Гелендваген".</p>
+            <img src="./IMG/механик.jpg" alt="Артем ремонтирует автомобиль">
+            <div class="caption">Артем Хазеев за работой — ремонт премиального автомобиля</div>
+        </div>
+    </div>
+
+    <footer>
+        <p>Внимание: Все события и персонажи вымышлены. Никто ничего не употреблял. Данный контент создан исключительно в развлекательных целях.<br>
+            <a href="https://kirill-fe.github.io/hart/idx">florik-project сми</a>
+        </p>
+        <p style="margin-top: 20px; font-size: 0.8rem; opacity: 0.8;">Разработано Флориком © 2025</p>
+    </footer>
+</div>
+
+<script>
+    (function() {
+        const protectBlock = document.querySelector('.screenshot-protect');
+        if (!protectBlock) return;
+        let hideTimeout = null;
+        function hideContent() {
+            if (hideTimeout) clearTimeout(hideTimeout);
+            protectBlock.style.opacity = '0';
+            protectBlock.style.visibility = 'hidden';
+        }
+        function showContent() {
+            if (hideTimeout) clearTimeout(hideTimeout);
+            protectBlock.style.opacity = '1';
+            protectBlock.style.visibility = 'visible';
+        }
+        function tempHide() {
+            hideContent();
+            hideTimeout = setTimeout(() => { showContent(); }, 500);
+        }
+        window.addEventListener('blur', () => hideContent());
+        window.addEventListener('focus', () => showContent());
+        document.addEventListener('visibilitychange', () => document.hidden ? hideContent() : showContent());
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'PrintScreen') { e.preventDefault(); tempHide(); return false; }
+            if ((e.ctrlKey || e.metaKey) && e.shiftKey && (e.key === 'S' || e.key === 's')) { e.preventDefault(); tempHide(); return false; }
+            if (e.key === 'F12') e.preventDefault();
+            if ((e.ctrlKey || e.metaKey) && (e.key === 's' || e.key === 'S' || e.key === 'p' || e.key === 'P')) { e.preventDefault(); return false; }
+        });
+        document.addEventListener('contextmenu', (e) => { e.preventDefault(); return false; });
+        const allMedia = document.querySelectorAll('img');
+        allMedia.forEach(el => {
+            el.addEventListener('dragstart', (e) => { e.preventDefault(); return false; });
+            el.addEventListener('contextmenu', (e) => { e.preventDefault(); return false; });
+        });
+        document.addEventListener('selectstart', (e) => { e.preventDefault(); return false; });
+    })();
+</script>
+</body>
+</html>
