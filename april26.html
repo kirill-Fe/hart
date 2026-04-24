@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>Троицко-Урайские вести | 25 апрелz 2026</title>
+    <link rel="icon" href="./img/favicon.jpg">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&family=Playfair+Display:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #8a63f2;
+            --secondary: #63f2c8;
+            --dark: #121212;
+            --darker: #0a0a0a;
+            --light: #e0e0e0;
+            --lighter: #ffffff;
+            --accent: #ff7e5f;
+            --card-bg: #1e1e1e;
+            --text: #e0e0e0;
+            --text-secondary: #a0a0a0;
+            --border-glow: rgba(138, 99, 242, 0.2);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            transition: all 0.2s ease;
+        }
+
+        body {
+            background-color: var(--dark);
+            color: var(--text);
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            overflow-x: hidden;
+            user-select: none;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        ::-webkit-scrollbar {
+            width: 12px;
+            height: 12px;
+        }
+        ::-webkit-scrollbar-track {
+            background: var(--darker);
+            border-radius: 10px;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: var(--primary);
+            border-radius: 10px;
+            border: 2px solid var(--darker);
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #7a4fdf;
+        }
+
+        ::selection {
+            background: var(--primary);
+            color: var(--lighter);
+            text-shadow: none;
+        }
+        ::-moz-selection {
+            background: var(--primary);
+            color: var(--lighter);
+        }
+
+        html {
+            cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="%238a63f2" d="M3 3l18 18-6-6V11L7 6v11z"/></svg>'), auto;
+        }
+        a, button {
+            cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="%23ff7e5f" d="M3 3l18 18-6-6V11L7 6v11z"/></svg>'), pointer;
+        }
+
+        img {
+            user-select: none;
+            -webkit-user-drag: none;
+            pointer-events: auto;
+            border-radius: 20px;
+            width: 100%;
+            max-width: 600px;
+            height: auto;
+            display: block;
+            margin: 20px auto;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.15);
+            border: 1px solid rgba(255,255,255,0.1);
+            transition: transform 0.3s ease;
+        }
+        img:hover {
+            transform: scale(1.01);
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 2rem auto;
+            padding: 0 1.5rem;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 3rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 2px solid var(--primary);
+            position: relative;
+        }
+        .header h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--lighter), var(--secondary));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            letter-spacing: -0.5px;
+            margin-bottom: 0.5rem;
+        }
+        .header .subtitle {
+            font-size: 1rem;
+            color: var(--text-secondary);
+            font-style: italic;
+            margin-bottom: 0.5rem;
+        }
+        .date {
+            font-size: 0.85rem;
+            color: var(--primary);
+            font-weight: 500;
+            letter-spacing: 0.5px;
+        }
+
+        .article-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+            padding: 0.75rem 1rem;
+            background: var(--card-bg);
+            border-radius: 16px;
+            border: 1px solid rgba(138, 99, 242, 0.2);
+            font-size: 0.9rem;
+        }
+        .author {
+            font-weight: 600;
+            color: var(--secondary);
+        }
+
+        .news-item {
+            background: var(--card-bg);
+            border-radius: 24px;
+            margin-bottom: 2rem;
+            padding: 1.2rem;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: transform 0.25s ease, box-shadow 0.3s ease;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+        }
+        .news-item:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
+            border-color: var(--border-glow);
+        }
+
+        h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            margin: 2rem 0 1.5rem;
+            color: var(--lighter);
+            border-left: 4px solid var(--primary);
+            padding-left: 1rem;
+        }
+
+        h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            margin-bottom: 0.8rem;
+            color: var(--secondary);
+            font-weight: 600;
+        }
+
+        .news-item p {
+            color: var(--text);
+            margin-bottom: 1rem;
+            line-height: 1.6;
+        }
+
+        .caption {
+            text-align: center;
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+            margin-top: -0.5rem;
+            margin-bottom: 0.8rem;
+            font-style: italic;
+        }
+
+        footer {
+            background: linear-gradient(135deg, var(--darker), var(--dark));
+            color: var(--text-secondary);
+            text-align: center;
+            padding: 2rem 1rem;
+            margin-top: 3rem;
+            border-top: 1px solid rgba(138, 99, 242, 0.3);
+            font-size: 0.85rem;
+        }
+        footer a {
+            color: var(--secondary);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+        footer a:hover {
+            color: var(--primary);
+            text-decoration: underline;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 1rem;
+            }
+            .header h1 {
+                font-size: 2rem;
+            }
+            h2 {
+                font-size: 1.6rem;
+            }
+            h3 {
+                font-size: 1.3rem;
+            }
+            .news-item {
+                padding: 1rem;
+                margin-bottom: 1.5rem;
+            }
+            .article-meta {
+                flex-direction: column;
+                gap: 0.5rem;
+                text-align: center;
+            }
+        }
+
+        .screenshot-protect {
+            transition: opacity 0.2s ease, visibility 0.2s ease;
+        }
+    </style>
+</head>
+<body>
+    <div class="screenshot-protect">
+        <div class="container">
+            <div class="header">
+                <h1>Троицко-Урайские вести</h1>
+                <div class="subtitle">Официальный информационный портал села Троицкий Урай</div>
+                <div class="date">Выпуск от 25 апреля 2026 года</div>
+            </div>
+
+            <h2>Главные события месяца</h2>
+            
+            <div class="article-meta">
+                <span class="author">Корреспонденты: <br> Кирилл Флорик <br> Гриша Диприк <br>Тема Гучигенг <br> Саня Торч</span>
+                <span class="author">Фото из личных архивов героев</span>
+            </div>
+
+            <!-- 1. Тёма и снюс -->
+            <div class="news-item">
+                <h3>Тёма решил попробовать, что такое снюс</h3>
+                <p>Арсений дал Артёму снюс химку, и Артём случайно проглотил слюну. Его стошнило с невиданной силой. Ему было так хуёво, что он поклялся больше никогда не приближаться к никотиновым пакетикам. Говорят, даже запах мяса теперь вызывает у него рвотный рефлекс.</p>
+                <img src="./img-april_26/тёма решил закинутся снюсом, но что то пошло не так.jpg" alt="Тёма под снюсом">
+                <div class="caption">Кадр из хаты Арсения</div>
+            </div>
+
+            <!-- 2. Трип от энергоса -->
+            <div class="news-item">
+                <h3>Трип от энергоса?</h3>
+                <p>Гриша въебал энергосов хуй знает сколько, добавил туда гаража и алтая. Его так жёстко трипануло, что кукуха уехала в отпуск на две недели. После этого он пошёл к своей жинке и показал ей какой он поко из бравл старса.</p>
+                <img src="./img-april_26/осенило(грека).jpg" alt="хуй пойми какой трип">
+                <div class="caption">не ебу чё сюда писать, просто идеи нет</div>
+            </div>
+
+            <!-- 3. Диприк и Торч философы -->
+            <div class="news-item">
+                <h3>Тайное заседание философов Диприк и Торч</h3>
+                <p>Скрытой камерой были замечены Грека и Саня, они лежали на диване и нихуя не понимали смысл жизни, но при этом выглядели просветлёнными. "Аптека ни с чем не сравнится, но пиво роднее", сказала Саня. Грека только кивнул и уставился в шкаф на против его. Живы, здоровы, и мы за них рады.</p>
+                <img src="./img-april_26/грека-саня.jpg" alt="Грека Саня">
+                <div class="caption">Филосовы хули</div>
+            </div>
+
+            <!-- 4. Грека с бородой -->
+            <div class="news-item">
+                <h3>Чеченская борода у Греки</h3>
+                <p>Ваще не ебу, откуда борода. В тот же день и в том же месте она появилась у него на лице. Сам Грека бороду бреет, но она отрастает снова, как у чиченцов езже</p>
+                <img src="./img-april_26/бородатый(грека).jpg" alt="грека борода">
+                <div class="caption">Грека как тёма дагистанцы и чеченцы есть же брат</div>
+            </div>
+
+            <!-- 5. Арсений с бородой -->
+            <div class="news-item">
+                <h3>Арсений уже давно отращивает бороду для контракта с RedBull'ом</h3>
+                <p>Арсений начал отращивать бороду после того, как с ним разорвали контракт с RedBull'ом. "Теперь я рекламирую самогон", заявил он, почёсывая бороду. По слухам, ему уже предложили лицо бренда ЗАО "деревенский самогон".</p>
+                <img src="./img-april_26/бородатый(арсений).jpg" alt="арс борода">
+                <div class="caption">Брутальный образ для похмелья</div>
+            </div>
+
+            <!-- 6. Ровные пацаны -->
+            <div class="news-item">
+                <h3>Грека и Тёма ровные пацаны</h3>
+                <p>На фото видно, как Грека и Тёма стоят в позе, будто они только что побили 15 башен близнецов голыми руками. Деревня затаила дыхание.</p>
+                <img src="./img-april_26/солевые-пацаны(грека-тёма).jpg" alt="бля типо сильные">
+                <div class="caption">ЧСВ зашкаливает</div>
+            </div>
+
+            <!-- 7. Драка педиков -->
+            <div class="news-item">
+                <h3>Грека с Тёмой что то не поделили</h3>
+                <p>На фото видно, как Грека и Тёма дерутся между собой в карнавальных костюмах. Причина конфликта осталась за кадром, но очевидцы говорят о последней бутылке АЛТАЯ. Поединок был эпичным и закончился ничьей.</p>
+                <img src="./img-april_26/драка-педиков(грека-тёма).jpg" alt="что то не поделили">
+                <div class="caption">Не ебу че писать(сценорист нужон баля)</div>
+            </div>
+
+            <!-- 8. Успокоила Саня -->
+            <div class="news-item">
+                <h3>Саня успокоила их</h3>
+                <p>Саня успокоила их тем, что сказала "Если не успокоитесь, пиво завтра вам не куплю, а тебе, Гриша, аптеки больше не дам". Моментально они успокоились. Друнья обнялись и забыли обиты.</p>
+                <img src="./img-april_26/зеленый-фон(грека-тёма).jpg" alt="успокоенные гриша с тёмой">
+                <div class="caption">Магия аптеки и пивного интереса</div>
+            </div>
+
+            <!-- 9. Тёма становится ровным -->
+            <div class="news-item">
+                <h3>Не ебу, что было дальше, но Тёма стал ровным пацаном (точно)</h3>
+                <p>В ТГК "Уроды" Артём отправил фотку, как он пришёл в парикмахерскую стричься, потому что ровные пацаны не впускали его в свою группировку из-за лохматой причёски.</p>
+                <img src="./img-april_26/Тёма решил постричься(прическа до).jpg" alt="стрижка до">
+                <div class="caption">Стрижка до.</div>
+            </div>
+
+            <!-- 10. Стрижка после -->
+            <div class="news-item">
+                <h3>Потом Артём показал, как он постригся</h3>
+                <p>Спустя минут 10–20 Артём присылает фото, где он уже постриженный. Ну реально похож на ровного пацана. "Примут или нет хуй знает, но я готов за брата порвать", написал он в комментарии.</p>
+                <img src="./img-april_26/тёма стал ровным пацанчиком (стрижка после).jpg" alt="стрижка после">
+                <div class="caption">Стрижка после.</div>
+            </div>
+
+            <!-- 11. Арсений уработался -->
+            <div class="news-item">
+                <h3>Арсений уработался</h3>
+                <p>Арсений просто спит. Спит уже 1.3 часа. Периодически переворачивается и бормочет что-то про энергетики. Редакция желает ему красочных снов.</p>
+                <img src="./img-april_26/арсений-спит.jpg" alt="НУ СПИТ АРС И ЧЁ ТАКОГО">
+                <div class="caption">НУ СПИТ АРС И ЧЁ ТАКОГО</div>
+            </div>
+
+        <footer>
+            <p>
+            ⚠️ Внимание: Все события вымышлены, персонажи и диалоги это всё из за больной фантазии автора. Никто ничего не употреблял. Данный контент создан исключительно в развлекательных целях.<br>
+            <a href="https://kirill-fe.github.io/hart/idx">florik-project СМИ</a>
+            </p>
+            <p style="margin-top: 20px; font-size: 0.8rem; opacity: 0.8;">Разработано Флориком © 2026</p>
+        </footer>
+    </div>
+
+    <script>
+        (function() {
+            const protectBlock = document.querySelector('.screenshot-protect');
+            if (!protectBlock) return;
+
+            let hideTimeout = null;
+
+            function hideContent() {
+                if (hideTimeout) clearTimeout(hideTimeout);
+                protectBlock.style.opacity = '0';
+                protectBlock.style.visibility = 'hidden';
+            }
+
+            function showContent() {
+                if (hideTimeout) clearTimeout(hideTimeout);
+                protectBlock.style.opacity = '1';
+                protectBlock.style.visibility = 'visible';
+            }
+
+            function tempHide() {
+                hideContent();
+                hideTimeout = setTimeout(() => {
+                    showContent();
+                }, 500);
+            }
+
+            window.addEventListener('blur', () => {
+                hideContent();
+            });
+
+            window.addEventListener('focus', () => {
+                showContent();
+            });
+
+            document.addEventListener('visibilitychange', () => {
+                if (document.hidden) {
+                    hideContent();
+                } else {
+                    showContent();
+                }
+            });
+
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'PrintScreen') {
+                    e.preventDefault();
+                    tempHide();
+                    return false;
+                }
+                if ((e.ctrlKey || e.metaKey) && e.shiftKey && (e.key === 'S' || e.key === 's')) {
+                    e.preventDefault();
+                    tempHide();
+                    return false;
+                }
+                if (e.key === 'F12') {
+                    e.preventDefault();
+                }
+            });
+
+            document.addEventListener('contextmenu', (e) => {
+                e.preventDefault();
+                return false;
+            });
+
+            const allImages = document.querySelectorAll('img');
+            allImages.forEach(img => {
+                img.addEventListener('dragstart', (e) => {
+                    e.preventDefault();
+                    return false;
+                });
+                img.addEventListener('contextmenu', (e) => {
+                    e.preventDefault();
+                    return false;
+                });
+            });
+
+            document.addEventListener('keydown', (e) => {
+                if ((e.ctrlKey || e.metaKey) && (e.key === 's' || e.key === 'S' || e.key === 'p' || e.key === 'P')) {
+                    e.preventDefault();
+                    return false;
+                }
+            });
+
+            document.addEventListener('selectstart', (e) => {
+                e.preventDefault();
+                return false;
+            });
+        })();
+    </script>
+</body>
+</html>
