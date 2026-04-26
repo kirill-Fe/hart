@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Кирилл Флорик — Ген. директор | Florik-Project СМИ</title>
+    <link rel="icon" href="florik.png">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&family=Playfair+Display:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            transition: all 0.2s ease;
+        }
+
+        :root {
+            --primary: #8a63f2;
+            --primary-glow: rgba(138, 99, 242, 0.35);
+            --secondary: #63f2c8;
+            --accent: #ff7e5f;
+            --dark: #121212;
+            --darker: #0a0a0a;
+            --card-bg: #1e1e1e;
+            --text: #e0e0e0;
+            --text-secondary: #a0a0a0;
+            --border-light: rgba(255, 255, 255, 0.05);
+            --border-glow: rgba(138, 99, 242, 0.3);
+        }
+
+        body {
+            background-color: var(--dark);
+            color: var(--text);
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            overflow-x: hidden;
+            user-select: none;
+            -webkit-tap-highlight-color: transparent;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        ::-webkit-scrollbar {
+            width: 12px;
+            height: 12px;
+        }
+        ::-webkit-scrollbar-track {
+            background: var(--darker);
+            border-radius: 10px;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: var(--primary);
+            border-radius: 10px;
+            border: 2px solid var(--darker);
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #7a4fdf;
+        }
+
+        ::selection {
+            background: var(--primary);
+            color: white;
+            text-shadow: none;
+        }
+
+        /* Кастомные курсоры (как в общем стиле) */
+        html {
+            cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="%238a63f2" d="M3 3l18 18-6-6V11L7 6v11z"/></svg>'), auto;
+        }
+        a, button {
+            cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="%23ff7e5f" d="M3 3l18 18-6-6V11L7 6v11z"/></svg>'), pointer;
+        }
+
+        .screenshot-protect {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .correspondent-card {
+            max-width: 450px;
+            width: 100%;
+            background: var(--card-bg);
+            backdrop-filter: blur(0px);
+            border-radius: 40px;
+            padding: 30px 25px 35px;
+            box-shadow: 0 20px 35px -8px rgba(0, 0, 0, 0.5), 0 0 0 1px var(--border-light) inset;
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 1px solid var(--border-light);
+        }
+
+        .correspondent-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 30px 45px -12px rgba(0, 0, 0, 0.6), 0 0 0 1px var(--border-glow) inset;
+            border-color: var(--border-glow);
+        }
+
+        .card-photo {
+            width: 160px;
+            height: 160px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin: 0 auto 20px;
+            border: 4px solid var(--primary);
+            background: var(--darker);
+            box-shadow: 0 12px 25px -8px rgba(138, 99, 242, 0.4);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .card-photo:hover {
+            transform: scale(1.02);
+            box-shadow: 0 18px 30px -6px rgba(138, 99, 242, 0.6);
+        }
+
+        .card-name {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #ffffff, var(--secondary), var(--primary));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin: 10px 0 5px;
+            letter-spacing: -0.02em;
+        }
+
+        .card-role {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--secondary);
+            margin-bottom: 20px;
+            display: inline-block;
+            padding: 6px 18px;
+            background: rgba(99, 242, 200, 0.1);
+            border-radius: 40px;
+            backdrop-filter: blur(4px);
+            border: 1px solid rgba(99, 242, 200, 0.3);
+        }
+
+        .card-desc {
+            font-size: 1rem;
+            color: var(--text);
+            line-height: 1.6;
+            margin-bottom: 25px;
+            padding: 0 5px;
+            font-weight: 400;
+            background: rgba(30, 30, 30, 0.6);
+            border-radius: 24px;
+            padding: 15px 18px;
+            backdrop-filter: blur(4px);
+            border: 1px solid var(--border-light);
+        }
+
+        .card-contacts {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            border-top: 2px dashed rgba(138, 99, 242, 0.3);
+            padding-top: 25px;
+            margin-top: 5px;
+        }
+
+        .card-contacts a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            font-size: 1rem;
+            color: var(--text);
+            background: rgba(255, 255, 255, 0.05);
+            padding: 12px 18px;
+            border-radius: 50px;
+            backdrop-filter: blur(4px);
+            border: 1px solid var(--border-light);
+            transition: all 0.2s ease;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .card-contacts a:hover {
+            background: rgba(138, 99, 242, 0.2);
+            border-color: var(--primary);
+            transform: translateX(4px);
+            box-shadow: 0 5px 12px rgba(138, 99, 242, 0.2);
+            color: var(--secondary);
+        }
+
+        .card-contacts a i {
+            font-size: 1.2rem;
+            color: var(--primary);
+        }
+
+        @media (max-width: 450px) {
+            .correspondent-card {
+                padding: 20px 15px 25px;
+            }
+            .card-photo {
+                width: 130px;
+                height: 130px;
+            }
+            .card-name {
+                font-size: 1.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="screenshot-protect">
+    <div class="correspondent-card">
+        <img src="florik.png" alt="Кирилл Флорик" class="card-photo" onerror="this.onerror=null; this.src='https://placehold.co/400x400/2d2d2d/8a63f2?text=K.Florik';">
+        <h3 class="card-name">Кирилл Флорик</h3>
+        <p class="card-role">Администратор сайта</p>
+        <p class="card-role">Ген. директор</p>
+        <p class="card-role">Главный редактор</p>
+        <p class="card-role">фотокорреспондент</p>
+        <p class="card-desc">Ловит экшн, считает тиражи и следит, чтобы корреспонденты собирали фотки. В свободное время выпускает мемы про Тему, Греки. И других.</p>
+        <div class="card-contacts">
+            <a href="https://t.me/FL0R1K" target="_blank" rel="noopener noreferrer">
+                <i class="fab fa-telegram"></i> @FL0R1K
+            </a>
+        </div>
+    </div>
+</div>
+
+<script>
+    (function() {
+        const protectBlock = document.querySelector('.screenshot-protect');
+        if (!protectBlock) return;
+        let hideTimeout = null;
+        function hideContent() {
+            if (hideTimeout) clearTimeout(hideTimeout);
+            protectBlock.style.opacity = '0';
+            protectBlock.style.visibility = 'hidden';
+        }
+        function showContent() {
+            if (hideTimeout) clearTimeout(hideTimeout);
+            protectBlock.style.opacity = '1';
+            protectBlock.style.visibility = 'visible';
+        }
+        function tempHide() {
+            hideContent();
+            hideTimeout = setTimeout(() => { showContent(); }, 500);
+        }
+        window.addEventListener('blur', () => hideContent());
+        window.addEventListener('focus', () => showContent());
+        document.addEventListener('visibilitychange', () => document.hidden ? hideContent() : showContent());
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'PrintScreen') { e.preventDefault(); tempHide(); return false; }
+            if ((e.ctrlKey || e.metaKey) && e.shiftKey && (e.key === 'S' || e.key === 's')) { e.preventDefault(); tempHide(); return false; }
+            if (e.key === 'F12') e.preventDefault();
+            if ((e.ctrlKey || e.metaKey) && (e.key === 's' || e.key === 'S' || e.key === 'p' || e.key === 'P')) { e.preventDefault(); return false; }
+        });
+        document.addEventListener('contextmenu', (e) => { e.preventDefault(); return false; });
+        const allImages = document.querySelectorAll('img');
+        allImages.forEach(img => {
+            img.addEventListener('dragstart', (e) => { e.preventDefault(); return false; });
+            img.addEventListener('contextmenu', (e) => { e.preventDefault(); return false; });
+        });
+        document.addEventListener('selectstart', (e) => { e.preventDefault(); return false; });
+    })();
+</script>
+</body>
+</html>
