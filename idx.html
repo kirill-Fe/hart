@@ -37,11 +37,10 @@
             font-family: 'Inter', sans-serif;
             line-height: 1.6;
             overflow-x: hidden;
-            user-select: none; /* дополнительно, но основная защита через JS */
+            user-select: none;
             -webkit-tap-highlight-color: transparent;
         }
 
-        /* Кастомный скролл */
         ::-webkit-scrollbar {
             width: 12px;
             height: 12px;
@@ -65,7 +64,6 @@
             text-shadow: none;
         }
 
-        /* Кастомный курсор в стиле april26 */
         html {
             cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="%238a63f2" d="M3 3l18 18-6-6V11L7 6v11z"/></svg>'), auto;
         }
@@ -79,7 +77,6 @@
             padding: 0 1.5rem;
         }
 
-        /* Шапка в стиле Троицко-Урайских вестей */
         .header {
             text-align: center;
             margin-bottom: 3rem;
@@ -113,6 +110,7 @@
             margin: 0.5rem auto 1rem;
             line-height: 1.5;
         }
+
         .correspondents {
             display: flex;
             flex-wrap: wrap;
@@ -145,7 +143,6 @@
             border-bottom-color: var(--secondary);
         }
 
-        /* Заголовок секции новостей */
         .section-head {
             display: flex;
             align-items: baseline;
@@ -175,7 +172,6 @@
             box-shadow: 0 2px 8px rgba(138, 99, 242, 0.3);
         }
 
-        /* Сетка карточек (как в оригинале, но стиль карточек как news-item из april26) */
         .news-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
@@ -257,7 +253,6 @@
             color: var(--primary);
         }
 
-        /* Footer такой же как в april26, но с оригинальным текстом */
         footer {
             background: linear-gradient(135deg, var(--darker), var(--dark));
             color: var(--text-secondary);
@@ -275,6 +270,90 @@
         footer a:hover {
             color: var(--primary);
             text-decoration: underline;
+        }
+
+        /* Стили для модального окна дня рождения */
+        .birthday-modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(5px);
+            z-index: 10000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+        .birthday-modal-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        .birthday-modal {
+            background: var(--card-bg);
+            border-radius: 32px;
+            max-width: 420px;
+            width: 90%;
+            padding: 2rem 1.8rem;
+            text-align: center;
+            border: 1px solid var(--border-glow);
+            box-shadow: 0 20px 35px rgba(0, 0, 0, 0.5);
+            transform: scale(0.9);
+            transition: transform 0.3s ease;
+        }
+        .birthday-modal-overlay.active .birthday-modal {
+            transform: scale(1);
+        }
+        .birthday-modal h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, #fff, var(--secondary));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        .birthday-modal p {
+            font-size: 1.2rem;
+            margin-bottom: 1.8rem;
+            color: var(--text);
+            line-height: 1.4;
+        }
+        .birthday-modal .telegram-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: #27a7e7;
+            color: white;
+            padding: 0.8rem 1.8rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: all 0.2s;
+            margin-bottom: 1rem;
+        }
+        .birthday-modal .telegram-link:hover {
+            background: #1c8bc2;
+            transform: translateY(-3px);
+        }
+        .birthday-modal .close-btn {
+            background: transparent;
+            border: 1px solid var(--primary);
+            color: var(--primary);
+            padding: 0.5rem 1.5rem;
+            border-radius: 40px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: 0.2s;
+        }
+        .birthday-modal .close-btn:hover {
+            background: var(--primary);
+            color: white;
         }
 
         @media (max-width: 740px) {
@@ -317,7 +396,6 @@
 </head>
 <body>
 
-<!-- Защитный блок от скриншотов / контекстного меню (полностью как в april26) -->
 <div class="screenshot-protect">
     <div class="container">
         <div class="header">
@@ -337,7 +415,7 @@
 
         <div class="section-head">
             <h2>Последние новости</h2>
-            <span class="news-counter" id="newsCounter">7</span>
+            <span class="news-counter" id="newsCounter">0</span>
         </div>
 
         <div class="news-grid" id="newsGrid">
@@ -397,6 +475,13 @@
                 <a href="https://kirill-fe.github.io/hart/april26" class="news-link" target="_blank">Читать полностью <i class="fas fa-arrow-right"></i></a>
                 <div class="news-date"><i class="far fa-calendar-alt"></i> 25 апреля 2026</div>
             </div>
+            <!-- Новость 9 -->
+            <div class="news-card">
+                <h3 class="news-title"></h3>
+                <p class="news-excerpt"></p>
+                <a href="https://kirill-fe.github.io/hart/dolbs" class="news-link" target="_blank">Читать полностью <i class="fas fa-arrow-right"></i></a>
+                <div class="news-date"><i class="far fa-calendar-alt"></i> N Мая 2026</div>
+            </div>
         </div>
     </div>
 
@@ -406,7 +491,6 @@
     </footer>
 </div>
 
-<!-- Защита от скриншотов, контекстного меню, выделения — точная копия из april26, адаптированная -->
 <script>
     (function() {
         const protectBlock = document.querySelector('.screenshot-protect');
@@ -463,7 +547,6 @@
             if (e.key === 'F12') {
                 e.preventDefault();
             }
-            // Защита от Ctrl+S / Ctrl+P
             if ((e.ctrlKey || e.metaKey) && (e.key === 's' || e.key === 'S' || e.key === 'p' || e.key === 'P')) {
                 e.preventDefault();
                 return false;
@@ -495,21 +578,17 @@
 </script>
 
 <script>
-    // Функция обновления счётчика материалов (адаптировано под стиль)
     function updateNewsCount() {
         const newsCards = document.querySelectorAll('.news-card');
         const counterSpan = document.getElementById('newsCounter');
         if (counterSpan) {
-            const count = newsCards.length;
-            counterSpan.textContent = count;
+            counterSpan.textContent = newsCards.length;
         }
     }
 
-    // Динамическая подсветка при наведении уже реализована через CSS, но добавим автоматическое обновление счётчика
     document.addEventListener('DOMContentLoaded', function() {
         updateNewsCount();
 
-        // Наблюдатель за изменениями в сетке новостей (если вдруг будут динамические изменения)
         const newsGrid = document.getElementById('newsGrid');
         if (newsGrid) {
             const observer = new MutationObserver(function() {
@@ -518,12 +597,64 @@
             observer.observe(newsGrid, { childList: true, subtree: true });
         }
 
-        // Лёгкий эффект для открытия ссылок в новой вкладке без потери производительности
         const allLinks = document.querySelectorAll('.news-link');
         allLinks.forEach(link => {
             link.setAttribute('target', '_blank');
             link.setAttribute('rel', 'noopener noreferrer');
         });
+
+        // ====================
+        function showBirthdayModal() {
+            // Проверяем, не показывали ли уже сегодня
+            const today = new Date();
+            const todayStr = `${today.getFullYear()}-${today.getMonth()+1}-${today.getDate()}`;
+            const storedDate = localStorage.getItem('birthday_shown_date');
+            
+            if (storedDate === todayStr) return; // уже показывали сегодня
+
+            // Создаём overlay
+            const overlay = document.createElement('div');
+            overlay.className = 'birthday-modal-overlay';
+            overlay.innerHTML = `
+                <div class="birthday-modal">
+                    <h2>🎉 С Днём Рождения! 🎉</h2>
+                    <p>Сегодня 28 апреля — день рождения Кирилла!<br>Не забудь поздравить его</p>
+                    <a href="https://t.me/Kirill_Florik?text=привет+С+днём+рождения,+желаю+счастья+и+успехов+в+жизни" class="telegram-link" target="_blank" rel="noopener noreferrer">
+                        <i class="fab fa-telegram"></i> Поздравить в Telegram
+                    </a>
+                    <br>
+                    <button class="close-btn">Закрыть</button>
+                </div>
+            `;
+            document.body.appendChild(overlay);
+            
+            // Показываем
+            setTimeout(() => overlay.classList.add('active'), 10);
+            
+            // Закрытие по кнопке
+            const closeBtn = overlay.querySelector('.close-btn');
+            closeBtn.addEventListener('click', () => {
+                overlay.classList.remove('active');
+                setTimeout(() => overlay.remove(), 300);
+            });
+            
+            // Закрытие по клику на фон
+            overlay.addEventListener('click', (e) => {
+                if (e.target === overlay) {
+                    overlay.classList.remove('active');
+                    setTimeout(() => overlay.remove(), 300);
+                }
+            });
+            
+            // Запоминаем, что сегодня показали
+            localStorage.setItem('birthday_shown_date', todayStr);
+        }
+        
+        // Проверяем дату: 28 апреля (месяц 3, т.к. январь = 0)
+        const now = new Date();
+        if (now.getMonth() === 3 && now.getDate() === 28) {
+            showBirthdayModal();
+        }
     });
 </script>
 
