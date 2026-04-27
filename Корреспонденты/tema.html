@@ -8,7 +8,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&family=Playfair+Display:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="shortcut icon" href="tema.jpg" type="image/x-icon">
-    
+
     <style>
         * {
             margin: 0;
@@ -197,6 +197,142 @@
             color: var(--primary);
         }
 
+        .birthday-text {
+            margin-top: 20px;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: rgba(138, 99, 242, 0.15);
+            padding: 8px 18px;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: var(--secondary);
+            border: 1px solid rgba(99, 242, 200, 0.3);
+            backdrop-filter: blur(4px);
+        }
+        .birthday-text i {
+            font-size: 1rem;
+            color: var(--primary);
+        }
+
+        .birthday-modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.85);
+            backdrop-filter: blur(5px);
+            z-index: 10000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+        .birthday-modal-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        .birthday-modal {
+            background: var(--card-bg);
+            border-radius: 32px;
+            max-width: 420px;
+            width: 90%;
+            padding: 2rem 1.8rem;
+            text-align: center;
+            border: 1px solid var(--border-glow);
+            box-shadow: 0 20px 35px rgba(0, 0, 0, 0.5);
+            transform: scale(0.9);
+            transition: transform 0.3s ease;
+        }
+        .birthday-modal-overlay.active .birthday-modal {
+            transform: scale(1);
+        }
+        .birthday-modal h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, #fff, var(--secondary));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        .birthday-modal p {
+            font-size: 1.2rem;
+            margin-bottom: 1.8rem;
+            color: var(--text);
+            line-height: 1.4;
+        }
+        .birthday-modal .telegram-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: #27a7e7;
+            color: white;
+            padding: 0.8rem 1.8rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: all 0.2s;
+            margin-bottom: 1rem;
+        }
+        .birthday-modal .telegram-link:hover {
+            background: #1c8bc2;
+            transform: translateY(-3px);
+        }
+        .birthday-modal .close-btn {
+            background: transparent;
+            border: 1px solid var(--primary);
+            color: var(--primary);
+            padding: 0.5rem 1.5rem;
+            border-radius: 40px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: 0.2s;
+        }
+        .birthday-modal .close-btn:hover {
+            background: var(--primary);
+            color: white;
+        }
+
+        .back-home-btn {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            background: rgba(30, 30, 30, 0.9);
+            backdrop-filter: blur(8px);
+            border-radius: 50px;
+            padding: 10px 18px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: var(--text);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.9rem;
+            border: 1px solid var(--border-light);
+            transition: all 0.2s ease;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+        }
+        .back-home-btn i {
+            font-size: 1rem;
+            color: var(--primary);
+        }
+        .back-home-btn:hover {
+            background: var(--primary);
+            color: white;
+            border-color: var(--primary);
+            transform: translateX(-4px);
+        }
+        .back-home-btn:hover i {
+            color: white;
+        }
+
         @media (max-width: 450px) {
             .correspondent-card {
                 padding: 20px 15px 25px;
@@ -212,6 +348,9 @@
     </style>
 </head>
 <body>
+    <a href="../idx.html" class="back-home-btn">
+        <i class="fas fa-arrow-left"></i> На главную
+    </a>
 <div class="screenshot-protect">
     <div class="correspondent-card">
         <img src="tema.jpg" alt="Тема Гучигенг" class="card-photo" onerror="this.onerror=null; this.src='https://placehold.co/400x400/2d2d2d/8a63f2?text=T.Guccigang';">
@@ -225,6 +364,9 @@
             <a href="https://t.me/temauniqsexx812" target="_blank" rel="noopener noreferrer">
                 <i class="fab fa-telegram"></i> @temauniqsexx812
             </a>
+        </div>
+        <div class="birthday-text">
+            <i class="fas fa-birthday-cake"></i> день рождения 16 марта
         </div>
     </div>
 </div>
@@ -265,6 +407,46 @@
         });
         document.addEventListener('selectstart', (e) => { e.preventDefault(); return false; });
     })();
+
+    function showBirthdayModal(name, tgUsername) {
+        const today = new Date();
+        const todayStr = `${today.getFullYear()}-${today.getMonth()+1}-${today.getDate()}`;
+        const storageKey = `birthday_shown_${tgUsername}`;
+        const storedDate = localStorage.getItem(storageKey);
+        if (storedDate === todayStr) return;
+
+        const overlay = document.createElement('div');
+        overlay.className = 'birthday-modal-overlay';
+        overlay.innerHTML = `
+            <div class="birthday-modal">
+                <h2>🎉 С Днём Рождения! 🎉</h2>
+                <p>Сегодня день рождения ${name}!<br>Не забудь поздравить его</p>
+                <a href="https://t.me/${tgUsername}?text=привет+С+днём+рождения,+желаю+счастья+и+успехов" class="telegram-link" target="_blank" rel="noopener noreferrer">
+                    <i class="fab fa-telegram"></i> Поздравить в Telegram
+                </a>
+                <br>
+                <button class="close-btn">Закрыть</button>
+            </div>
+        `;
+        document.body.appendChild(overlay);
+        setTimeout(() => overlay.classList.add('active'), 10);
+        const closeBtn = overlay.querySelector('.close-btn');
+        const closeModal = () => {
+            overlay.classList.remove('active');
+            setTimeout(() => overlay.remove(), 300);
+        };
+        closeBtn.addEventListener('click', closeModal);
+        overlay.addEventListener('click', (e) => { if (e.target === overlay) closeModal(); });
+        localStorage.setItem(storageKey, todayStr);
+    }
+
+    document.addEventListener('DOMContentLoaded', function() {
+        const now = new Date();
+        // 16 марта (месяц 2, день 16)
+        if (now.getMonth() === 2 && now.getDate() === 16) {
+            showBirthdayModal('Тёмы', 'temauniqsexx812');
+        }
+    });
 </script>
 </body>
 </html>
