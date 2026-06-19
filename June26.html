@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>Троицко-Урайские вести | 13-14 июня 2026</title>
+    <link rel="icon" href="./IMG/favicon.jpg">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&family=Playfair+Display:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #8a63f2;
+            --secondary: #63f2c8;
+            --dark: #121212;
+            --darker: #0a0a0a;
+            --light: #e0e0e0;
+            --lighter: #ffffff;
+            --accent: #ff7e5f;
+            --card-bg: #1e1e1e;
+            --text: #e0e0e0;
+            --text-secondary: #a0a0a0;
+            --border-glow: rgba(138, 99, 242, 0.2);
+            --border-light: rgba(255, 255, 255, 0.05);  /* добавлено для стиля как в idx */
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            transition: all 0.2s ease;
+        }
+
+        body {
+            background-color: var(--dark);
+            color: var(--text);
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            overflow-x: hidden;
+            user-select: none;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        ::-webkit-scrollbar {
+            width: 12px;
+            height: 12px;
+        }
+        ::-webkit-scrollbar-track {
+            background: var(--darker);
+            border-radius: 10px;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: var(--primary);
+            border-radius: 10px;
+            border: 2px solid var(--darker);
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #7a4fdf;
+        }
+
+        ::selection {
+            background: var(--primary);
+            color: var(--lighter);
+            text-shadow: none;
+        }
+        ::-moz-selection {
+            background: var(--primary);
+            color: var(--lighter);
+        }
+
+        html {
+            cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="%238a63f2" d="M3 3l18 18-6-6V11L7 6v11z"/></svg>'), auto;
+        }
+        a, button {
+            cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="%23ff7e5f" d="M3 3l18 18-6-6V11L7 6v11z"/></svg>'), pointer;
+        }
+
+        img {
+            user-select: none;
+            -webkit-user-drag: none;
+            pointer-events: auto;
+            border-radius: 20px;
+            width: 100%;
+            max-width: 600px;
+            height: auto;
+            display: block;
+            margin: 20px auto;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.15);
+            border: 1px solid rgba(255,255,255,0.1);
+            transition: transform 0.3s ease;
+        }
+        img:hover {
+            transform: scale(1.01);
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 2rem auto;
+            padding: 0 1.5rem;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 3rem;
+            padding-bottom: 1.8rem;
+            border-bottom: 2px solid var(--primary);
+            position: relative;
+        }
+
+        .header h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--lighter), var(--secondary));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            letter-spacing: -0.5px;
+            margin-bottom: 0.5rem;
+        }
+        .header .subtitle {
+            font-size: 1rem;
+            color: var(--text-secondary);
+            font-style: italic;
+            margin-bottom: 0.5rem;
+        }
+        .date {
+            font-size: 0.85rem;
+            color: var(--primary);
+            font-weight: 500;
+            letter-spacing: 0.5px;
+        }
+
+        /* Блок корреспондентов — полностью как в idx.html */
+        .correspondents {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1rem 1.8rem;
+            margin-top: 1.2rem;
+            background: rgba(30, 30, 30, 0.6);
+            backdrop-filter: blur(4px);
+            border-radius: 60px;
+            padding: 0.7rem 1.6rem;
+            width: fit-content;
+            margin-left: auto;
+            margin-right: auto;
+            border: 1px solid var(--border-light);
+        }
+        .correspondents span {
+            color: var(--text-secondary);
+            font-weight: 500;
+        }
+        .correspondents a {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 600;
+            transition: 0.2s;
+            border-bottom: 1px dashed transparent;
+        }
+        .correspondents a:hover {
+            color: var(--secondary);
+            border-bottom-color: var(--secondary);
+        }
+
+        h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            margin: 2rem 0 1.5rem;
+            color: var(--lighter);
+            border-left: 4px solid var(--primary);
+            padding-left: 1rem;
+        }
+
+        h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            margin-bottom: 0.8rem;
+            color: var(--secondary);
+            font-weight: 600;
+        }
+
+        .news-item {
+            background: var(--card-bg);
+            border-radius: 24px;
+            margin-bottom: 2rem;
+            padding: 1.2rem;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: transform 0.25s ease, box-shadow 0.3s ease;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+        }
+        .news-item:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
+            border-color: var(--border-glow);
+        }
+
+        .news-item p {
+            color: var(--text);
+            margin-bottom: 1rem;
+            line-height: 1.6;
+        }
+
+        .caption {
+            text-align: center;
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+            margin-top: -0.5rem;
+            margin-bottom: 0.8rem;
+            font-style: italic;
+        }
+
+        footer {
+            background: linear-gradient(135deg, var(--darker), var(--dark));
+            color: var(--text-secondary);
+            text-align: center;
+            padding: 2rem 1rem;
+            margin-top: 3rem;
+            border-top: 1px solid rgba(138, 99, 242, 0.3);
+            font-size: 0.85rem;
+        }
+        footer a {
+            color: var(--secondary);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+        footer a:hover {
+            color: var(--primary);
+            text-decoration: underline;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 1rem;
+            }
+            .header h1 {
+                font-size: 2rem;
+            }
+            h2 {
+                font-size: 1.6rem;
+            }
+            h3 {
+                font-size: 1.3rem;
+            }
+            .news-item {
+                padding: 1rem;
+                margin-bottom: 1.5rem;
+            }
+            .correspondents {
+                flex-direction: column;
+                align-items: center;
+                gap: 0.6rem;
+                border-radius: 32px;
+                background: rgba(20,20,20,0.8);
+            }
+        }
+
+        .screenshot-protect {
+            transition: opacity 0.2s ease, visibility 0.2s ease;
+        }
+    </style>
+</head>
+<body>
+    <div class="screenshot-protect">
+        <div class="container">
+            <div class="header">
+                <h1>Троицко-Урайские вести</h1>
+                <div class="subtitle">Официальный информационный портал села Троицкий Урай</div>
+                <div class="date">Выпуск с 13-14 июня 2026 года</div>
+
+                <div class="correspondents">
+                    <span>Корреспондент:</span>
+                    <a href="./Корреспонденты/florik.html" target="_blank"><i class="fas fa-microphone-alt"></i> Кирилл Флорик</a>
+                </div>
+            </div>
+
+            <h2>Главные события месяца</h2>
+
+            <!-- 1 -->
+            <div class="news-item">
+                <h3>Хасбик приплыл без матраса и без лодки — сам, своими руками</h3>
+                <p>Местные рыбаки в шоке: легендарный пловец, не меняя выражения лица, пересёк Индийский океан вплавь. Говорят, он искал тишины и покоя, но нашёл только Арса с зип-пакетиком.</p>
+                <img src="./июнь26/Хасбик_приплыл_сам.png" alt="">
+                <div class="caption">Кадр от Флорика</div>
+            </div>
+
+            <!-- 2 -->
+            <div class="news-item">
+                <h3>Арс нюхнул свой меф и объявил Мальдивы раем на земле</h3>
+                <p>«Это же Мальдивы, тут надо расслабляться по-взрослому», — заявил Арс, сделав первый вдох. Очевидцы утверждают: после этого он попытался объяснить воздуху теорию струн и назвал его «братом по разуму». Воздух, кстати, не возражал.</p>
+                <img src="./июнь26/Арс_разговаривает_с_воздухом.png" alt="">
+                <div class="caption">Кадр от Флорика</div>
+            </div>
+
+            <!-- 3 -->
+            <div class="news-item">
+                <h3>Арс в эйфории знакомит нас с «девушкой своей мечты»</h3>
+                <p>Он держит в руках бревно, гладит его и нежно называет «Мариной». «Мы познакомились на закате», — шепчет Арс, пока бревно молча соглашается. Туристы в ужасе отворачиваются.</p>
+                <img src="./июнь26/Арс_и_бревно_Марина.png" alt="">
+                <div class="caption">Кадр от Флорика</div>
+            </div>
+
+            <!-- 4 -->
+            <div class="news-item">
+                <h3>Арс устроил археологические раскопки в костре</h3>
+                <p>В припадке паранойи Арс начал выгребать пепел из костра в поисках второго заветного пакетика. «Он точно тут был! Я его помню!» — кричал он, обжигая пальцы и распугивая ящериц.</p>
+                <img src="./июнь26/Арс_ищет_в_костре.png" alt="">
+                <div class="caption">Кадр от Флорика</div>
+            </div>
+
+            <!-- 5 -->
+            <div class="news-item">
+                <h3>Арс просто залез на дерево и ищет там пакетик</h3>
+                <p>Не найдя сокровища в огне, Арс полез на ближайшее дерево. Сверху доносилось бормотание: «Где же ты, родной?» — и шуршание листьев. Пакетик, увы, не нашёлся.</p>
+                <img src="./июнь26/Арс_на_дереве.png" alt="">
+                <div class="caption">Кадр от Флорика</div>
+            </div>
+
+            <!-- 6 -->
+            <div class="news-item">
+                <h3>Арс заподозрил своего друга по кличке Капибара в краже века</h3>
+                <p>Следующая остановка — трусы друга Капибары. Арс с горящими глазами обыскивал беднягу, утверждая, что тот «слишком довольно выглядит, чтобы быть честным». Капибара (друг) невозмутимо жевал травинку и делал вид, что это не его уровень драмы.</p>
+                <img src="./июнь26/Арс_обыскивает_Капибару.png" alt="">
+                <div class="caption">Кадр от Флорика</div>
+            </div>
+
+            <!-- 7 -->
+            <div class="news-item">
+                <h3>Арс делит бревно с неандертальцем</h3>
+                <p>На пляже разгорелся исторический конфликт: Арс встретил местного жителя, который, по его мнению, «слишком похож на древнего человека», и начал делить с ним то самое бревно (свою «Марину»). «Это моё бревно! Я его первым увидел!» — доказывал Арс, пока «неандерталец» просто пытался пожарить рыбу.</p>
+                <img src="./июнь26/Арс_делит_бревно.png" alt="">
+                <div class="caption">Кадр от Флорика</div>
+            </div>
+
+            <!-- 8 -->
+            <div class="news-item">
+                <h3>Арс доебался до мимо проходящего человека</h3>
+                <p>Он остановил случайного прохожего с вопросом: «Ты точно не знаешь, где мой пакетик?» Мимо проходящий ничего не знал, пожал плечами и пошёл дальше, оставив Арса в ещё более глубокой паранойе.</p>
+                <img src="./июнь26/Арс_и_прохожий.png" alt="">
+                <div class="caption">Кадр от Флорика</div>
+            </div>
+
+            <!-- 9 -->
+            <div class="news-item">
+                <h3>Арс строит ПВО из стеклянной бутылки и костра</h3>
+                <p>Арс в ярости: аборигены продают меф по ценам, которые бьют все рекорды инфляции! «Это грабёж среди бела дня!» — кричит он, сооружая систему ПВО из стеклянной бутылки и костра — при нагревании пробка выстреливает, символически сбивая «вражеские» лодки с завышенными прайсами. Весь остров теперь похож на полигон для запуска шампанского.</p>
+                <img src="./июнь26/Арс_ПВО_из_бутылки.png" alt="">
+                <div class="caption">Кадр от Флорика</div>
+            </div>
+
+            <!-- 10 -->
+            <div class="news-item">
+                <h3>Адель показывает рыбу, которую не поймал</h3>
+                <p>Адель разводит руками: «Вот такая была!» — и тут же вздыхает: «Но сорвалась, зараза, и уплыла в открытое море». Теперь он показывает только воздух, но уверяет, что рыба была размером с его руку.</p>
+                <img src="./июнь26/Адель_и_сорвавшаяся_рыба.png" alt="">
+                <div class="caption">Кадр от Флорика</div>
+            </div>
+
+            <!-- 11 -->
+            <div class="news-item">
+                <h3>Капибара сияет: он получил зарплату и не потратил ни копейки на пиво</h3>
+                <p>Единственный адекватный персонаж на острове — друг Капибара. Он получил зарплату, не купил ни одной бутылки пива и теперь просто сидит и улыбается, наблюдая за цирком, который устроил Арс. «Деньги — это просто бумажки», — философски замечает Капибара, похлопывая себя по карману.</p>
+                <img src="./июнь26/Капибара_получил_ЗП.png" alt="">
+                <div class="caption">Кадр от Флорика</div>
+            </div>
+
+            <!-- 12 -->
+            <div class="news-item">
+                <h3>Артем сидел в гараже на своем гелике</h3>
+                <p>Спустя более 10 месяцев ада, сварки и бессонных ночей Артем наконец-то сидел в гараже на своём гелике — никуда не выезжая, просто сидел и наслаждался моментом.</p>
+                <img src="./июнь26/Артем_в_гараже_на_гелике.png" alt="">
+                <div class="caption">Кадр от Флорика</div>
+            </div>
+        </div>
+    
+        <footer>
+            <p>
+            ⚠️ Внимание: Все события вымышлены, персонажи и диалоги это всё из за больной фантазии автора. Никто ничего не употреблял. Данный контент создан исключительно в развлекательных целях.<br>
+            <a href="https://kirill-fe.github.io/hart/idx">florik-project СМИ</a>
+            </p>
+            <p style="margin-top: 20px; font-size: 0.8rem; opacity: 0.8;">Разработано Флориком © 2026</p>
+        </footer>
+    </div>
+
+    <script>
+        (function() {
+            const protectBlock = document.querySelector('.screenshot-protect');
+            if (!protectBlock) return;
+
+            let hideTimeout = null;
+
+            function hideContent() {
+                if (hideTimeout) clearTimeout(hideTimeout);
+                protectBlock.style.opacity = '0';
+                protectBlock.style.visibility = 'hidden';
+            }
+
+            function showContent() {
+                if (hideTimeout) clearTimeout(hideTimeout);
+                protectBlock.style.opacity = '1';
+                protectBlock.style.visibility = 'visible';
+            }
+
+            function tempHide() {
+                hideContent();
+                hideTimeout = setTimeout(() => {
+                    showContent();
+                }, 500);
+            }
+
+            window.addEventListener('blur', () => {
+                hideContent();
+            });
+
+            window.addEventListener('focus', () => {
+                showContent();
+            });
+
+            document.addEventListener('visibilitychange', () => {
+                if (document.hidden) {
+                    hideContent();
+                } else {
+                    showContent();
+                }
+            });
+
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'PrintScreen') {
+                    e.preventDefault();
+                    tempHide();
+                    return false;
+                }
+                if ((e.ctrlKey || e.metaKey) && e.shiftKey && (e.key === 'S' || e.key === 's')) {
+                    e.preventDefault();
+                    tempHide();
+                    return false;
+                }
+                if (e.key === 'F12') {
+                    e.preventDefault();
+                }
+            });
+
+            document.addEventListener('contextmenu', (e) => {
+                e.preventDefault();
+                return false;
+            });
+
+            const allImages = document.querySelectorAll('img');
+            allImages.forEach(img => {
+                img.addEventListener('dragstart', (e) => {
+                    e.preventDefault();
+                    return false;
+                });
+                img.addEventListener('contextmenu', (e) => {
+                    e.preventDefault();
+                    return false;
+                });
+            });
+
+            document.addEventListener('keydown', (e) => {
+                if ((e.ctrlKey || e.metaKey) && (e.key === 's' || e.key === 'S' || e.key === 'p' || e.key === 'P')) {
+                    e.preventDefault();
+                    return false;
+                }
+            });
+
+            document.addEventListener('selectstart', (e) => {
+                e.preventDefault();
+                return false;
+            });
+        })();
+    </script>
+</body>
+</html>
