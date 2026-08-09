@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>Троицко-Урайские вести | 20 июля - 10 августа 2026</title>
+    <link rel="icon" href="./IMG/favicon.jpg">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&family=Playfair+Display:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #8a63f2;
+            --secondary: #63f2c8;
+            --dark: #121212;
+            --darker: #0a0a0a;
+            --light: #e0e0e0;
+            --lighter: #ffffff;
+            --accent: #ff7e5f;
+            --card-bg: #1e1e1e;
+            --text: #e0e0e0;
+            --text-secondary: #a0a0a0;
+            --border-glow: rgba(138, 99, 242, 0.2);
+            --border-light: rgba(255, 255, 255, 0.05);  /* добавлено для стиля как в idx */
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            transition: all 0.2s ease;
+        }
+
+        body {
+            background-color: var(--dark);
+            color: var(--text);
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            overflow-x: hidden;
+            user-select: none;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        ::-webkit-scrollbar {
+            width: 12px;
+            height: 12px;
+        }
+        ::-webkit-scrollbar-track {
+            background: var(--darker);
+            border-radius: 10px;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: var(--primary);
+            border-radius: 10px;
+            border: 2px solid var(--darker);
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #7a4fdf;
+        }
+
+        ::selection {
+            background: var(--primary);
+            color: var(--lighter);
+            text-shadow: none;
+        }
+        ::-moz-selection {
+            background: var(--primary);
+            color: var(--lighter);
+        }
+
+        html {
+            cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="%238a63f2" d="M3 3l18 18-6-6V11L7 6v11z"/></svg>'), auto;
+        }
+        a, button {
+            cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="%23ff7e5f" d="M3 3l18 18-6-6V11L7 6v11z"/></svg>'), pointer;
+        }
+
+        img {
+            user-select: none;
+            -webkit-user-drag: none;
+            pointer-events: auto;
+            border-radius: 20px;
+            width: 100%;
+            max-width: 600px;
+            height: auto;
+            display: block;
+            margin: 20px auto;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.15);
+            border: 1px solid rgba(255,255,255,0.1);
+            transition: transform 0.3s ease;
+        }
+        img:hover {
+            transform: scale(1.01);
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 2rem auto;
+            padding: 0 1.5rem;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 3rem;
+            padding-bottom: 1.8rem;
+            border-bottom: 2px solid var(--primary);
+            position: relative;
+        }
+
+        .header h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--lighter), var(--secondary));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            letter-spacing: -0.5px;
+            margin-bottom: 0.5rem;
+        }
+        .header .subtitle {
+            font-size: 1rem;
+            color: var(--text-secondary);
+            font-style: italic;
+            margin-bottom: 0.5rem;
+        }
+        .date {
+            font-size: 0.85rem;
+            color: var(--primary);
+            font-weight: 500;
+            letter-spacing: 0.5px;
+        }
+
+        /* Блок корреспондентов — полностью как в idx.html */
+        .correspondents {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1rem 1.8rem;
+            margin-top: 1.2rem;
+            background: rgba(30, 30, 30, 0.6);
+            backdrop-filter: blur(4px);
+            border-radius: 60px;
+            padding: 0.7rem 1.6rem;
+            width: fit-content;
+            margin-left: auto;
+            margin-right: auto;
+            border: 1px solid var(--border-light);
+        }
+        .correspondents span {
+            color: var(--text-secondary);
+            font-weight: 500;
+        }
+        .correspondents a {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 600;
+            transition: 0.2s;
+            border-bottom: 1px dashed transparent;
+        }
+        .correspondents a:hover {
+            color: var(--secondary);
+            border-bottom-color: var(--secondary);
+        }
+
+        h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            margin: 2rem 0 1.5rem;
+            color: var(--lighter);
+            border-left: 4px solid var(--primary);
+            padding-left: 1rem;
+        }
+
+        h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            margin-bottom: 0.8rem;
+            color: var(--secondary);
+            font-weight: 600;
+        }
+
+        .news-item {
+            background: var(--card-bg);
+            border-radius: 24px;
+            margin-bottom: 2rem;
+            padding: 1.2rem;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: transform 0.25s ease, box-shadow 0.3s ease;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+        }
+        .news-item:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
+            border-color: var(--border-glow);
+        }
+
+        .news-item p {
+            color: var(--text);
+            margin-bottom: 1rem;
+            line-height: 1.6;
+        }
+
+        .caption {
+            text-align: center;
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+            margin-top: -0.5rem;
+            margin-bottom: 0.8rem;
+            font-style: italic;
+        }
+
+        footer {
+            background: linear-gradient(135deg, var(--darker), var(--dark));
+            color: var(--text-secondary);
+            text-align: center;
+            padding: 2rem 1rem;
+            margin-top: 3rem;
+            border-top: 1px solid rgba(138, 99, 242, 0.3);
+            font-size: 0.85rem;
+        }
+        footer a {
+            color: var(--secondary);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+        footer a:hover {
+            color: var(--primary);
+            text-decoration: underline;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 1rem;
+            }
+            .header h1 {
+                font-size: 2rem;
+            }
+            h2 {
+                font-size: 1.6rem;
+            }
+            h3 {
+                font-size: 1.3rem;
+            }
+            .news-item {
+                padding: 1rem;
+                margin-bottom: 1.5rem;
+            }
+            .correspondents {
+                flex-direction: column;
+                align-items: center;
+                gap: 0.6rem;
+                border-radius: 32px;
+                background: rgba(20,20,20,0.8);
+            }
+        }
+
+        .screenshot-protect {
+            transition: opacity 0.2s ease, visibility 0.2s ease;
+        }
+    </style>
+</head>
+<body>
+    <div class="screenshot-protect">
+        <div class="container">
+            <div class="header">
+                <h1>Троицко-Урайские вести</h1>
+                <div class="subtitle">Официальный информационный портал села Троицкий Урай</div>
+                <div class="date">Выпуск с 20 июля по 10 августа</div>
+
+                <div class="correspondents">
+                    <span>Корреспондент:</span>
+                    <a href="./Корреспонденты/florik.html" target="_blank"><i class="fas fa-microphone-alt"></i> Кирилл Флорик</a>
+                    <a href="./Корреспонденты/diprik.html" target="_blank"><i class="fas fa-microphone-alt"></i> Гриша Диприк</a>
+                    <a href="./Корреспонденты/tema.html" target="_blank"><i class="fas fa-microphone-alt"></i> Тема Гучигенг</a>
+                </div>
+            </div>
+
+            <h2>Главные события месяца</h2>
+
+            <!-- 1 -->
+            <div class="news-item">
+                <h3>Фанатки с деревни выследили Фирзара и устроили фотосессию на месте</h3>
+                <p>Группа восторженных поклонниц из соседней деревни, вооружившись смартфонами и кричалками, выследили местную легенду — Фирза. Он пытался замаскироваться под пенёк, но фанатки оказались зорче. Совместное фото сделано, автографы розданы, нервная система Фирза подорвана до конца недели.</p>
+                <img src="./июль 26/фирз с фанатками.jpg" alt="">
+                <div class="caption">Фирз пытался слиться с природой, но не вышло</div>
+            </div>
+
+            <!-- 2 -->
+            <div class="news-item">
+                <h3>Сенсация! Гриша и Арсений официально признаны сыновьями Артёма с Ильназом</h3>
+                <p>Народное голосование на улице узаконило многодетную семью. Теперь у Артёма с Ильназом — двое взрослых «детей», которые до сих пор не знают, кто из них кому кем приходится. Но главное — все счастливы, а это уже диагноз.</p>
+                <img src="./июль 26/многодетная семья.jpg" alt="">
+                <div class="caption">Семейное фото без скандалов (пока что)</div>
+            </div>
+
+            <!-- 3 -->
+            <div class="news-item">
+                <h3>Саммит в чулане: Фирз, Флорик, Диприк и Артем обсуждали судьбы мира</h3>
+                <p>«Мы просто хотели обсудить, куда пропал Wi-Fi», — заявили участники саммита. Однако очевидцы утверждают, что в чулане звучал смех, щёлканье зажигалок и подозрительное слово «спайс». Сами участники отрицают, что дышали чем-то кроме пыли. Но пыль там, кстати, историческая — ещё с 90-х.</p>
+                <img src="./июль 26/ф. ф. г. а.jpg" alt="">
+                <div class="caption">Главное — не дышать, а обсуждать</div>
+            </div>
+
+            <!-- 4 -->
+            <div class="news-item">
+                <h3>Фанатки настигли знаменитостей в Рыбной Слободе: отдых сорван</h3>
+                <p>Местные знаменитости думали, что смогут спокойно прогуляться по улицам легендарного посёлка, но не тут-то было! Три девушки с горящими глазами и телефоном наизготовку перехватили им дорогу, чтобы не прошли. «Блин, ну почему именно сейчас?! Я вообще-то отдохнуть пришёл в Рыбку, а не на фотосессию!» — возмущался один из корреспондентов, надев очки. Но фанаток такие мелочи не остановили — совместное фото было сделано, а корреспонденты больше никогда не ходили в Рыбку без маскировки.</p>
+                <img src="./июль 26/с фанатками.jpg" alt="">
+                <div class="caption">Фото на память, которое будет сниться в кошмарах</div>
+            </div>
+
+            <!-- 5 -->
+            <div class="news-item">
+                <h3>Флорик решил стать эстетиком и устроил фотосессию с хвостиком</h3>
+                <p>В объектив фотокамеры попал Директор СМИ Флорик в своём новом амплуа — «загадочный незнакомец с хвостиком». Парень явно вдохновлялся японскими аниме и пиксельными фотосессиями в инстаграме, но что-то пошло не так. «Это называется "эстетик момент", вы просто не понимаете!» — заявил Флорик, прикрывая лицо рукой и не давая сделать нормальный кадр.</p>
+                <img src="./июль 26/просто флорик.jpg" alt="">
+                <div class="caption">Хвостик — это серьёзно, не смейтесь</div>
+            </div>
+
+            <!-- 6 -->
+            <div class="news-item">
+                <h3>«Всё бесит!»: лицо Гриши говорит больше, чем он сам</h3>
+                <p>На фото запечатлён Гриша, у которого выражение лица кричит: «Я бы сейчас был где угодно, но только не здесь». Глаза закрыты или смотрят в никуда, брови нахмурены, рот вот-вот скажет что-то нецензурное — классический портрет человека, который только что понял, что забыл дома наушники.</p>
+                <img src="./июль 26/упоролся.jpg" alt="">
+                <div class="caption">Лицо, которое видело слишком много</div>
+            </div>
+
+            <!-- 7 -->
+            <div class="news-item">
+                <h3>Артем до спайса: хронический поиск координат</h3>
+                <p>Фото Артёма с задумчивым видом подписано: «Жду координаты». По словам соседей, он смотрит в телефон уже третий час. На вопрос «Ты чего ждёшь?» Артем многозначительно молчит. Говорят, если долго смотреть в телефон, можно увидеть ответы на все вопросы Вселенной. Или просто дождаться уведомления — что вероятнее.</p>
+                <img src="./июль 26/не ебу.jpg" alt="">
+                <div class="caption">Ожидание — это тоже искусство</div>
+            </div>
+
+            <!-- 8 -->
+            <div class="news-item">
+                <h3>Артем под спайсом: чуланный дзен и полный покой</h3>
+                <p>Чулан Гриши, поза «полусидя-полулёжа», взгляд в пол. Артем думает о вечном. Или о том, что забыл закрыть холодильник. Версия Гриши: «Он уже час так сидит, я боюсь его трогать». Артем: «А чё? Норм же».</p>
+                <img src="./июль 26/под спайсом.jpg" alt="">
+                <div class="caption">Если долго сидеть в чулане, можно стать философом</div>
+            </div>
+
+            <!-- 9 -->
+            <div class="news-item">
+                <h3>Гриша накурился гашика: белый фон, взгляд в никуда</h3>
+                <p>Улица, белый фон, взгляд в никуда. Гриша пытается вспомнить, как его зовут и зачем он вышел из дома. Прохожие обходили его стороной, приняв за арт-объект. Сам Гриша: «Я просто воздухом дышу».</p>
+                <img src="./июль 26/накурыш.jpg" alt="">
+                <div class="caption">Арт-объект местного значения</div>
+            </div>
+
+            <!-- 10 -->
+            <div class="news-item">
+                <h3>Гриша с Арсением планируют захват Польши (по факту — смотрят порнуху)</h3>
+                <p>Сидят в чулане, уставились в экран. План «захвата» оказался слишком сложным, поэтому парни переключились на что-то попроще. Гриша: «Мы просто карту изучали». Арсений: «Ага, историческую на порнхабе».</p>
+                <img src="./июль 26/захват польши.jpg" alt="">
+                <div class="caption">География — это важно, но не настолько</div>
+            </div>
+
+            <!-- 11 -->
+            <div class="news-item">
+                <h3>Гриша с Артемом нашли приёмного брата: теперь их трое</h3>
+                <p>Парни познакомились с афроамериканцем и сразу объявили его родственником. Артем: «Ну а чё, брат же!» Гриша: «Теперь у нас есть брат, который умеет танцевать». Новый «брат» пока не в курсе, что стал частью семьи.</p>
+                <img src="./июль 26/артем гриша и черный русский.jpg" alt="">
+                <div class="caption">Семья растёт, даже если не все в курсе</div>
+            </div>
+
+            <!--12-->
+            <div class="news-item">
+                <h3>Гриша стал нефором: широкие штаны и чувство стиля</h3>
+                <p>Надел широкие штаны и теперь ходит важно, как будто весь мир — его подиум. Гриша: «Это стиль, вы просто не понимаете». Местные бабушки: «Гриш, ты чё, в мешке?»</p>
+                <img src="./июль 26/гриша с сиськами.jpg" alt="">
+                <div class="caption">Мода — это больно, но красиво</div>
+            </div>
+
+            <!-- 13 -->
+            <div class="news-item">
+                <h3>Артем был недоволен, но ава получилась огонь</h3>
+                <p>Показал два фака, закрыл лицо — и получился шедевр. Сам Артем: «Я вообще другое хотел, но так даже лучше».</p>
+                <img src="./июль 26/элитное фото артема.jpg" alt="">
+                <div class="caption">Иногда лучшее — это случайность</div>
+            </div>
+
+            <!--15-->
+            <div class="news-item">
+                <h3>Гриша стал шутом: волосы торчат, жизнь удалась</h3>
+                <p>Надоело быть нефором — волосы всё равно торчат как у клоуна. Гриша: «Раз природа так решила, буду шутом!»</p>
+                <img src="./июль 26/шут гриша.jpg" alt="">
+                <div class="caption">Клоун — это не профессия, это призвание</div>
+            </div>
+
+            <!--16-->
+            <div class="news-item">
+                <h3>Арсений поддержал тренд: тоже стал шутом</h3>
+                <p>Увидел, что у Гриши круто, и тоже решил. Арсений: «Мы теперь команда!» Гриша: «Я первый был!»</p>
+                <img src="./июль 26/ШУТ.jpg" alt="">
+                <div class="caption">Теперь их двое. Спасите, кто может</div>
+            </div>
+
+            <!--17-->
+            <div class="news-item">
+                <h3>Фанатки снова нашли долбоёбов в Рыбке: рецидив</h3>
+                <p>Те же девушки, те же парни, то же место. Фанатки: «Мы их везде найдём!» Парни: «Мы просто отдыхаем, а не фотосессию делаем».</p>
+                <img src="./июль 26/с фанатками 2.jpg" alt="">
+                <div class="caption">Рыбная Слобода — зона повышенной опасности</div>
+            </div>
+
+            <!--18-->
+            <div class="news-item">
+                <h3>Гриша вернулся из Африки: лицо чёрное, глаза хитрые</h3>
+                <p>Лицо чёрное, глаза хитрые. Гриша: «Я там был, всё видел». Друзья: «Гриш, это ж ты вчера на солнце обгорел».</p>
+                <img src="./июль 26/приехал с африки .jpg" alt="">
+                <div class="caption">Африка близко, если не пользоваться кремом</div>
+            </div>
+
+            <!--19-->
+            <div class="news-item">
+                <h3>Гриша накурился: спйсом по расписанию</h3>
+                <p>Опять. Уже который раз. Гриша: «Ну а чё, отдыхаю же». Врачи рекомендуют дышать воздухом, но Гриша явно дышит чем-то другим.</p>
+                <img src="./июль 26/накурыш.jpg" alt="">
+                <div class="caption">Третий раз за месяц — это уже система</div>
+            </div>
+
+            <!--20-->
+            <div class="news-item">
+                <h3>Артем тоже накурился: компания в сборе</h3>
+                <p>Гриша не стал скучать один — Артем поддержал инициативу. Теперь их двое, и никто не помнит, зачем они вообще вышли из чулана. Но главное, что вместе!</p>
+                <img src="./июль 26/артем.jpg" alt="">
+                <div class="caption">Друзья познаются не только в беде, но и в дыму</div>
+            </div>
+        </div>
+    
+        <footer>
+            <p>
+            ⚠️ Внимание: Все события вымышлены, персонажи и диалоги это всё из за больной фантазии автора. Никто ничего не употреблял. Данный контент создан исключительно в развлекательных целях.<br>
+            <a href="https://kirill-fe.github.io/hart/idx">florik-project СМИ</a>
+            </p>
+            <p style="margin-top: 20px; font-size: 0.8rem; opacity: 0.8;">Разработано Флориком © 2026</p>
+        </footer>
+    </div>
+
+    <script>
+        (function() {
+            const protectBlock = document.querySelector('.screenshot-protect');
+            if (!protectBlock) return;
+
+            let hideTimeout = null;
+
+            function hideContent() {
+                if (hideTimeout) clearTimeout(hideTimeout);
+                protectBlock.style.opacity = '0';
+                protectBlock.style.visibility = 'hidden';
+            }
+
+            function showContent() {
+                if (hideTimeout) clearTimeout(hideTimeout);
+                protectBlock.style.opacity = '1';
+                protectBlock.style.visibility = 'visible';
+            }
+
+            function tempHide() {
+                hideContent();
+                hideTimeout = setTimeout(() => {
+                    showContent();
+                }, 500);
+            }
+
+            window.addEventListener('blur', () => {
+                hideContent();
+            });
+
+            window.addEventListener('focus', () => {
+                showContent();
+            });
+
+            document.addEventListener('visibilitychange', () => {
+                if (document.hidden) {
+                    hideContent();
+                } else {
+                    showContent();
+                }
+            });
+
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'PrintScreen') {
+                    e.preventDefault();
+                    tempHide();
+                    return false;
+                }
+                if ((e.ctrlKey || e.metaKey) && e.shiftKey && (e.key === 'S' || e.key === 's')) {
+                    e.preventDefault();
+                    tempHide();
+                    return false;
+                }
+                if (e.key === 'F12') {
+                    e.preventDefault();
+                }
+            });
+
+            document.addEventListener('contextmenu', (e) => {
+                e.preventDefault();
+                return false;
+            });
+
+            const allImages = document.querySelectorAll('img');
+            allImages.forEach(img => {
+                img.addEventListener('dragstart', (e) => {
+                    e.preventDefault();
+                    return false;
+                });
+                img.addEventListener('contextmenu', (e) => {
+                    e.preventDefault();
+                    return false;
+                });
+            });
+
+            document.addEventListener('keydown', (e) => {
+                if ((e.ctrlKey || e.metaKey) && (e.key === 's' || e.key === 'S' || e.key === 'p' || e.key === 'P')) {
+                    e.preventDefault();
+                    return false;
+                }
+            });
+
+            document.addEventListener('selectstart', (e) => {
+                e.preventDefault();
+                return false;
+            });
+        })();
+    </script>
+</body>
+</html>
